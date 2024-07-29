@@ -1,0 +1,18 @@
+//*****
+#include<stdio.h>
+void Display()
+{
+    int iCnt=0;
+    for(iCnt=1;iCnt<=5;iCnt++)
+    {
+        printf("%d\t",iCnt);
+    }
+    printf("\n");//console end letter
+}
+
+int main()
+{
+    Display();
+
+    return 0;
+}
