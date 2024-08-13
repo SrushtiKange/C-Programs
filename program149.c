@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main()
+{
+    char ch;
+//character is of 1 byte
+    printf("enter one character\n");
+    scanf("%c",&ch);
+
+    printf("Entered character is %c\n",ch);
+
+    printf("ASCII value of that character is %d",ch);
+    return 0;
+
+}
