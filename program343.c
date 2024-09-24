@@ -1,0 +1,112 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+
+void InsertFirst(PPNODE First,int No)
+{
+    PNODE newn=NULL;
+
+    newn=(PNODE)malloc(sizeof(NODE));
+
+    newn->data=No;
+    newn->next=NULL;
+
+    if(*First==NULL)
+    {
+        *First=newn;
+    }
+    else
+    {
+        newn->next=*First;
+        *First=newn;
+    }
+
+}//here time complexity is O(1)
+
+void InsertLast(PPNODE First,int No)
+{
+    PNODE newn=NULL;
+    PNODE temp=*First;
+
+    newn=(PNODE)malloc(sizeof(NODE));
+
+    newn->data=No;
+    newn->next=NULL;
+
+    if(*First==NULL)
+    {
+        *First=newn;
+    }
+    else
+    {
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        } 
+        temp->next=newn;
+    }
+}//time complexity is O(N) n is number of node
+
+void Display(PNODE First)
+{
+    while(First!=NULL)
+    {
+        printf("|%d|->",First->data);
+        First=First->next;
+    }
+    printf("NULL");
+}//time complexity is O(N)
+
+int Count(PNODE First)
+{
+    int iCnt=0;
+
+     while(First!=NULL)
+    {
+        iCnt++;
+        First=First->next;
+    }
+    return iCnt;
+}//time complexity is O(N)
+
+
+int main()
+{
+    PNODE Head=NULL;
+    int iRet=0;
+
+    InsertFirst(&Head,51);
+    InsertFirst(&Head,21);
+    InsertFirst(&Head,11);
+
+    InsertLast(&Head,101);
+    InsertLast(&Head,111);
+    InsertLast(&Head,121);
+
+    Display(Head);
+    iRet=Count(Head);
+
+    printf("\nNumber of elements are %d\n",iRet);
+
+    return 0;
+}
+
+/*
+InsertFirst
+step1: allocate memory for node
+step2: initialize the node
+step3: chk whether LL is empty
+stemp4:if LL is empty store address of new node in the heap pointer through first
+step5:otherwise 
+
+
+*/
